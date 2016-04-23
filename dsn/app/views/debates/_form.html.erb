@@ -1,0 +1,25 @@
+<%= form_for @debate do |f| %>
+    <% if @debate.errors.any? %>
+        <div class="col-lg-12">
+          <p class="text-danger">Erros: <%= @debate.errors.full_messages.to_sentence %></p>
+        </div>
+    <% end %>
+    <div class="col-lg-6">
+      <div class="form-group">
+        <%= f.label :title, class: 'required' %>
+        <%= f.text_field :title, class: 'form-control'%>
+      </div>
+      <div class="form-group">
+        <%= f.label :overview, class: 'required' %>
+        <%= f.text_area :overview,class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :status, class: 'required' %>,<br/>
+        <%= f.select :status,['Open','Closed'],{}, {class: 'form-control'} %>
+      </div>
+        <div class="form-group">
+            <%= f.submit 'Post', class: 'btn btn-success' %>
+      </div>
+    </div>
+    
+<% end %>

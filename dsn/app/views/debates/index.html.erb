@@ -1,0 +1,18 @@
+<table class='table table-striped'>
+        <thead>
+      <tr>
+          <th>Title</th>
+          <th>Status</th>
+          <th>User</th>
+        </tr>
+    </thead>    
+<tbody>
+<% @debates.each do |debate| %>
+            <tr>
+              <td><%= debate.title %></td>
+              <td><%= debate.status %></td>
+              <td><%= debate.user.email.split('@').at(0) %></td>
+            </tr>
+<% end %>
+<tbody/>
+</table>
