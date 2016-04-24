@@ -1,61 +1,118 @@
-<div>
-    <h1><%= @debate.title %></h1>
-    <h2><%= @debate.user.email.split('@').at(0) %></h2>
-</div>
-<div><%=@debate.status%></div>
-<div>
-    <p class='container'><%= @debate.overview %></p>
-</div>
+<section id="wrapper">
 
-<div class="col-md-12 col-right">
-    <div class="col-inside-lg decor-default activities" id="activities" style="overflow: auto; outline: none;" tabindex="5003">
-        <h3>Discussion</h3>
-        
-        
-        <%unless @debate.posts.nil?%>
-        <%@debate.posts.each do |post|%>
-          <div class="unit">
-            <a class="avatar" href="#"><img src="http://bootdey.com/img/Content/avatar/avatar5.png" class="img-responsive" alt="profile"></a>
-            <div class="field title">
-                <a href="#"><%=post.user.email.split("@").at(0)%></a> posted a new opinion
+    <div class="row">
+
+        <div class="col-sm-12">
+            <section class="panel panel-default mail-container">
+                <div class="panel-heading">
+                    <strong>
+                        <span class="fa fa-th"></span>
+                        Debate
+                    </strong>
+                </div>
+                <div class="panel-body">
+                    <div class="mail-header row">
+                        <div class="col-md-12">
+                            <h2><%= @debate.title %></h2>
+
+                        </div>
+
+                    </div>
+
+                    <div class="mail-info">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="list-unstyled list-inline">
+                                    <%if @debate.status == "Open"%><li><h2><span class="label label-success">Status: <%=@debate.status%></span></h2></li>
+                                    <%else%><li><h2><span class="label label-warning">Status: <%=@debate.status%></span></h2></li>
+                                    <%end%>
+                                    <%if @debate.user == current_user%>
+                                      <li>
+                                          <div><%=link_to "Edit",{action: "edit"},{class: "btn btn-primary"}%></div>
+                                        </li>
+                                        <li>
+                                            <div><%= button_to "Delete", { action: "destroy"},method: :delete, data:  {confirm: "Are you sure?" },class: "btn btn-danger" %></div>
+                                          </li>
+                                        <%end%>
+                                        <li><i class="fa fa-calendar-o"></i><%=@debate.created_at.to_s%></li>
+                                        <li><i class="fa fa-user"></i><%= @debate.user.email.split('@').at(0) %></li>
+                                        <li><i class="fa fa-star"></i><%= @debate.visits %> views</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <%unless @debate.picture.nil?%><%= image_tag @debate.picture.url(:normal) %><%end%> 
+                        </div>
+                        <div class="mail-content">
+                            <%= @debate.overview.html_safe %>
+                        </div>
+
+
+
+                    </div>
+                </section>
             </div>
-            <div class="field date">
-                <span class="f-l">Today 5:60 pm - 12.06.2016</span>
-                <span class="f-r">15 min ago</span>
-            </div>
-            <div class="field">
-                <p><%=post.content.html_safe%>'</p>
-            </div>
+
+
+
         </div>
-        <%end%>
-        <%end%>
+
+    </section>
     </div>
-    
-  <div class="panel">
-    <div class="panel-body">
-  
-    <%= form_for @post do |f| %>
-    <% if @post.errors.any? %>
-        <div class="col-lg-12">
-          <p class="text-danger">Erros: <%= @post.errors.full_messages.to_sentence %></p>
+
+    <div class="col-md-12 col-right">
+        <div class="col-inside-lg decor-default activities" id="activities" style="overflow: auto; outline: none;" tabindex="5003">
+            <h3>Discussion</h3>
+
+
+            <%unless @debate.posts.nil?%>
+              <%@debate.posts.each do |post|%>
+                <div class="unit">
+                    <a class="avatar" href="#"><img src="http://bootdey.com/img/Content/avatar/avatar1.png" class="img-responsive" alt="profile"></a>
+                    <div class="field title">
+                        <a href="#"><%=post.user.email.split("@").at(0)%></a> posted a new opinion
+                    </div>
+                    <div class="field date">
+                        <span class="f-l">Today 5:60 pm - 12.06.2016</span>
+                        <span class="f-r">15 min ago</span>
+                    </div>
+                    <div class="field">
+                        <p><%=post.content.html_safe%>'</p>
+                    </div>
+                </div>
+              <%end%>
+            <%end%>
         </div>
-    <% end %>
-    <div class="col-lg-12">
-      <div class="form-group">
-        <%= f.bootsy_area :content, {class: 'form-control',placeholder: "What are you thinking?",:size => "10x5"}%>
-      </div>
-        <%= f.hidden_field :debate_id, value: @debate.id %>
-      
-        <div class="form-group">
-            <%= f.submit 'Share', class: 'btn btn-sm btn-primary pull-right' %>
-      </div>
-    </div>
-    
-<% end %>
-    
-       
-    </div>
-</div>
-        
-</div>
+
+        <%if @debate.status != "Closed" && !current_user.nil?%>
+          <div class="panel">
+              <div class="panel-body">
+
+                  <%= form_for @post do |f| %>
+                    <% if @post.errors.any? %>
+                      <div class="col-lg-12">
+                          <p class="text-danger">Erros: <%= @post.errors.full_messages.to_sentence %></p>
+                      </div>
+                    <% end %>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <%= f.bootsy_area :content, {class: 'form-control',placeholder: "What are you thinking?",:size => "10x5"}%>
+                          </div>
+                          <%= f.hidden_field :debate_id, value: @debate.id %>
+
+                          <div class="form-group">
+                              <%= f.submit 'Share', class: 'btn btn-sm btn-primary pull-right' %>
+                            </div>
+                        </div>
+
+                      <% end %>
+
+
+                  </div>
+              </div>
+            <%end%>
+
+        </div>
 

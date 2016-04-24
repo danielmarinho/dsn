@@ -6,45 +6,48 @@
                 <li data-target="#main-slider" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
-                <div class="item active" style="background-image: url(assets/slider/bg1.jpg)">
+                <%unless Debate.first.nil?%>
+                <div class="item active" style="background-image: url('<%=Debate.first.picture.url%>')">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="carousel-content centered">
-                                    <h2 class="animation animated-item-1">Refugee Crisis</h2>
-                                    <p class="animation animated-item-2">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                                    <h2 class="animation animated-item-1"><%=Debate.first.title%></h2>
+                                    <p class="animation animated-item-2"><%= truncate(sanitize(Debate.first.overview,:tags =>[]), :length => 200, :omission => "" , :escape => false) %>...</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div><!--/.item-->
-                <div class="item" style="background-image: url(assets/slider/bg2.jpg)">
+                <%end%>
+                <%unless Debate.all[1].nil?%>
+                <div class="item" style="background-image: url('<%=Debate.all[1].picture.url%>')">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="carousel-content center centered">
-                                    <h2 class="boxed animation animated-item-1">Brazilian political and economical crisis</h2>
-                                    <p class="boxed animation animated-item-2">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                                    <br>
-                                    <a class="btn btn-md animation animated-item-3" href="#">Learn More</a>
+                                <div class="carousel-content centered">
+                                    <h2 class="animation animated-item-1"><%=Debate.all[1].title%></h2>
+                                    <p class="animation animated-item-2"><%= truncate(sanitize(Debate.all[1].overview,:tags =>[]), :length => 200, :omission => "" , :escape => false) %>...</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div><!--/.item-->
-                <div class="item" style="background-image: url(assets/slider/bg3.jpg)">
+                <%end%>
+                <%unless Debate.all[2].nil?%>
+                <div class="item" style="background-image: url('<%=Debate.all[2].picture.url%>')">
                     <div class="container">
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <div class="carousel-content centered">
-                                    <h2 class="animation animated-item-1">Terrorist Attacks</h2>
-                                    <p class="animation animated-item-2">Pellentesque habitant morbi tristique senectus et netus et malesuada fames</p>
-                                    <a class="btn btn-md animation animated-item-3" href="#">Learn More</a>
+                                    <h2 class="animation animated-item-1"><%=Debate.all[2].title%></h2>
+                                    <p class="animation animated-item-2"><%= truncate(sanitize(Debate.all[2].overview,:tags =>[]), :length => 200, :omission => "" , :escape => false) %>...</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div><!--/.item-->
+                <%end%>
             </div><!--/.carousel-inner-->
         </div><!--/.carousel-->
         <a class="prev hidden-xs" href="#main-slider" data-slide="prev">
