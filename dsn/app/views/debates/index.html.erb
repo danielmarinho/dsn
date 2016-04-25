@@ -1,32 +1,35 @@
-<div class="container bootstrap snippet">
-    <div class="row">
-        <% @debates.each do |debate| %>
+<div class="container col-sm-12">
+    <%=link_to "New Debate",{action: "new"},{class: "btn btn-success"}%>
+  </div><br/>
+  <div class="container bootstrap snippet">
+      <div class="row">
+          <% @debates.each do |debate| %>
 
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <div class="well blog">
-                  <a href="<%=debate_path(debate.id)%>">
-                      <div class="date primary">
-                          <span class="blog-date"><%=debate.created_at.strftime("%B")%></span>
-                          <span class="blog-number"><%=debate.created_at.day%></span>
-                      </div>
-                      <div class="row">
-                          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                              <div class="image">
-                                  <%= image_tag debate.picture.url(:thumb), :size => "703×469"%>
-                              </div>
-                          </div>
-                          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                              <div class="blog-details">
-                                  <h2><%=debate.title%></h2><h5><%=debate.visits%> view(s)&nbsp; &nbsp; &nbsp; <%=debate.posts.size%> opinion(s)</h5>
-                                  <p>
-                                      <%= truncate(sanitize(debate.overview,:tags =>[]), :length => 300, :omission => "" , :escape => false) %>...
-                                  </p>
-                              </div>
-                          </div>
-                      </div>
-                  </a>
-              </div>
-          </div>
-        <% end %>
-    </div>
-</div>                    
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="well blog">
+                    <a href="<%=debate_path(debate.id)%>">
+                        <div class="date primary">
+                            <span class="blog-date"><%=debate.created_at.strftime("%B")%></span>
+                            <span class="blog-number"><%=debate.created_at.day%></span>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                <div class="image">
+                                    <%= image_tag debate.picture.url(:thumb), :size => "703×469"%>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="blog-details">
+                                    <h2><%=debate.title%></h2><h5><%=debate.visits%> view(s)&nbsp; &nbsp; &nbsp; <%=debate.posts.size%> opinion(s)</h5>
+                                    <p>
+                                        <%= truncate(sanitize(debate.overview,:tags =>[]), :length => 300, :omission => "" , :escape => false) %>...
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+          <% end %>
+      </div>
+  </div>                    
