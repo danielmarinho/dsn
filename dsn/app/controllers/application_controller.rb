@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   #protect_from_forgery with: :exception
   
   def index
-    
+    @top_3_debates = [Debate.first,Debate.all[1],Debate.all[2]]#It will be replaced for the right method later
   end
   
 end

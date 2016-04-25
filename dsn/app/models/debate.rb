@@ -1,4 +1,5 @@
 class Debate < ActiveRecord::Base
+  include Bootsy::Container#for the WYSIWYG editor to work
   belongs_to :user
   has_many :posts
   

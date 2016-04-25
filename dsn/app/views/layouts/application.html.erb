@@ -35,8 +35,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="<%=root_path%>">Home</a></li>
                         <li><%= link_to "Debates", debates_path %></li>
-                        <li><a href="about-us.html">Articles</a></li>
-                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="#">Articles</a></li>
+                        <li><a href="#">About Us</a></li>
                         <%if user_signed_in?%>
                         <li><a class="btn btn-large btn-primary"><%= current_user.email.split("@").at(0) %></a></li>
                         <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-large btn-primary" %></li>

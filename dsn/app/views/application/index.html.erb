@@ -6,42 +6,42 @@
                 <li data-target="#main-slider" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
-                <%unless Debate.first.nil?%>
-                <div class="item active" style="background-image: url('<%=Debate.first.picture.url%>')">
+                <%unless @top_3_debates[0].nil?%>
+                <div class="item active" style="background-image: url('<%=@top_3_debates[0].picture.url%>')">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="carousel-content centered">
-                                    <h2 class="animation animated-item-1"><%=Debate.first.title%></h2>
-                                    <p class="animation animated-item-2"><%= truncate(sanitize(Debate.first.overview,:tags =>[]), :length => 200, :omission => "" , :escape => false) %>...</p>
+                                    <h2 class="animation animated-item-1"><%=@top_3_debates[0].title%></h2>
+                                    <p class="animation animated-item-2"><%= truncate(sanitize(@top_3_debates[0].overview,:tags =>[]), :length => 200, :omission => "" , :escape => false) %>...</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div><!--/.item-->
                 <%end%>
-                <%unless Debate.all[1].nil?%>
-                <div class="item" style="background-image: url('<%=Debate.all[1].picture.url%>')">
+                <%unless @top_3_debates[1].nil?%>
+                <div class="item" style="background-image: url('<%=@top_3_debates[1].picture.url%>')">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="carousel-content centered">
-                                    <h2 class="animation animated-item-1"><%=Debate.all[1].title%></h2>
-                                    <p class="animation animated-item-2"><%= truncate(sanitize(Debate.all[1].overview,:tags =>[]), :length => 200, :omission => "" , :escape => false) %>...</p>
+                                    <h2 class="animation animated-item-1"><%=@top_3_debates[1].title%></h2>
+                                    <p class="animation animated-item-2"><%= truncate(sanitize(@top_3_debates[1].overview,:tags =>[]), :length => 200, :omission => "" , :escape => false) %>...</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div><!--/.item-->
                 <%end%>
-                <%unless Debate.all[2].nil?%>
-                <div class="item" style="background-image: url('<%=Debate.all[2].picture.url%>')">
+                <%unless @top_3_debates[2].nil?%>
+                <div class="item" style="background-image: url('<%=@top_3_debates[2].picture.url%>')">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="carousel-content centered">
-                                    <h2 class="animation animated-item-1"><%=Debate.all[2].title%></h2>
-                                    <p class="animation animated-item-2"><%= truncate(sanitize(Debate.all[2].overview,:tags =>[]), :length => 200, :omission => "" , :escape => false) %>...</p>
+                                    <h2 class="animation animated-item-1"><%=@top_3_debates[2].title%></h2>
+                                    <p class="animation animated-item-2"><%= truncate(sanitize(@top_3_debates[2].overview,:tags =>[]), :length => 200, :omission => "" , :escape => false) %>...</p>
                                 </div>
                             </div>
                         </div>

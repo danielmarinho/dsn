@@ -6,9 +6,6 @@ class DebatesController < ApplicationController
   
   def show
     @debate = Debate.find(params[:id])
-    if @debate.visits.nil?
-      @debate.visits = 0
-    end
     @debate.visits = @debate.visits+1
     @debate.save
     @post = Post.new
@@ -25,10 +22,8 @@ class DebatesController < ApplicationController
     respond_to do |format|
       if @debate.save
         format.html { redirect_to debate_path(@debate.id), notice: 'Debate is now created!' }
-        format.json { render :show, status: :created, location: @debate }
       else
         format.html { render :new }
-        format.json { render json: @debate.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,10 +37,8 @@ class DebatesController < ApplicationController
     respond_to do |format|
       if @debate.update(debate_params)
         format.html { redirect_to debate_path(@debate.id), notice: 'Debate updated!' }
-        format.json { render :show, status: :created, location: @debate }
       else
         format.html { render :new }
-        format.json { render json: @debate.errors, status: :unprocessable_entity }
       end
     end
   end
