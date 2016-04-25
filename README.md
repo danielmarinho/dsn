@@ -13,19 +13,20 @@ picture that represents that subject. The main page shows the most discussed deb
 comments and more.
 
 What we have for now:
--Users can create an account to use the social network;
--Users can create a new debate with the status open or closed;
--Users can post their opinions on debates;
--3 main debates appear on the main page as featured;
+
+-Users can create an account to use the social network;<br />
+-Users can create a new debate with the status open or closed;<br />
+-Users can post their opinions on debates;<br />
+-3 main debates appear on the main page as featured;<br />
 
 To do:
 
 -Users can upvote a opinion (and that will be used as criteria for the top 3 debates
-featured on the main page)
--Categories for debates;
--Search for debates;
--Personal page for the user, where he/she can see his debates and opinions;
+featured on the main page);<br />
+-Categories for debates;<br />
+-Search for debates;<br />
+-Personal page for the user, where he/she can see his debates and opinions;<br />
 -Articles (Articles will be different from debates, it show immediately a opinion from the author
-on the main text, allowing comments instead of opinions)
--Share with Facebook and Twitter functionalities;
--...
+on the main text, allowing comments instead of opinions);<br />
+-Share with Facebook and Twitter functionalities;<br />
+-...<br />
